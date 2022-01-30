@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Salaries of economists in Brazil{% endblock %}</h1>
+
+    <p> This API returns salary data for economics professionals in Brazil in 2019, with additional information about gender, age and location. </p>
+    
+    <p> The data were collected from the system provided by the Brazilian Ministry of Economy, cleaned and prepared for consumption through the API. </p>
+  
+    <p> Below is a table with the columns and examples of the data returned by the API: </p>  
+    
+    <table style="width:600px; border: 1px solid black" class="table">
+            <tr>
+                <th>id</th>
+                <th>age</th>
+                <th>salary(R$)</th>
+                <th>gender</th>
+                <th>state</th>
+            </tr>
+        
+            <!-- here is a for-loop to give us all the socks -->
+            {% for salary in salarys %}
+            <tr>
+                <td style="text-align:center">{{ salary[0] }}</td>
+                <td style="text-align:center">{{ salary[1] }}</td>
+                <td style="text-align:center">{{ salary[2] }}</td>
+                <td style="text-align:center">{{ salary[3] }}</td>
+                <td style="text-align:center">{{ salary[4] }}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    
+    <p> This API contains two endpoints: </p>
+    <ul>
+        <li><b>/data_sample</b>: returns the first 10 rows of data. It works as a reference to understand how the data is structured;</li>
+        <li><b>/all_data</b>: returns all data.</li>
+      </ul>
+
+{% endblock %}
